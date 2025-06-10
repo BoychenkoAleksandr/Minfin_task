@@ -2,6 +2,7 @@ import React from 'react';
 import {App, Button, Form, Input} from 'antd';
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
+import {API_REGISTER} from "../constants/APIConstants";
 
 
 const Register = () => {
@@ -11,7 +12,7 @@ const Register = () => {
     const { notification } = App.useApp();
 
     const onFinish = (values) => {
-        axios.post('http://localhost:8080/api/auth/register',
+        axios.post(`${API_REGISTER}`,
             {password: values.password, username: values.username})
             .then(() => {
                 navigate('/login')
